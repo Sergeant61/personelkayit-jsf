@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Insert title here</title>
+</h:head>
+<body>
+
+	<p:panelGrid columns="2">
+
+		<ui:include src="menu.xhtml" />
+
+		<h:form id="perEkle">
+			<p:panelGrid columns="2">
+
+				<p:outputLabel value="Adı" />
+				<p:inputTextarea value="#{personelBean.personAdd.ad}" rows="1" required="true"
+					cols="40" />
+
+				<p:outputLabel value="Soyadı" />
+				<p:inputTextarea value="#{personelBean.personAdd.soyad}" rows="1"
+					cols="40" />
+
+				<p:outputLabel value="Telefon Numarası" />
+				<p:inputTextarea value="#{personelBean.personAdd.telefon}" rows="1"
+					cols="40" />
+
+				<p:outputLabel value="Email" />
+				<p:inputTextarea value="#{personelBean.personAdd.email}" rows="1"
+					cols="40" />
+
+				<p:outputLabel value="Hangi Kurs" />
+				<p:selectManyMenu id="advanced"
+					value="#{personelBean.selectedHangiKursList}"
+					converter="durumConverter" showCheckbox="true">
+					<f:selectItems value="#{personelBean.hangiKursList}" var="kurs"
+						itemLabel="#{kurs.kursAdi}" itemValue="#{kurs}" />
+				</p:selectManyMenu>
+
+
+				<p:outputLabel for="console" value="Görüşme Tipi" />
+				<p:selectOneRadio id="console"
+					value="#{personelBean.personAdd.gorusmeTipi}">
+					<f:selectItem itemLabel="Telefon" itemValue="1" />
+					<f:selectItem itemLabel="Yüz Yüze" itemValue="2" />
+				</p:selectOneRadio>
+
+				<p:outputLabel value="Açıklamalar" />
+				<p:panelGrid>
+					<p:inputTextarea value="#{personelBean.personAdd.mesaj}" rows="5"
+						cols="30" counter="display" maxlength="100"
+						counterTemplate="{0} / 100" autoResize="false" />
+					<h:outputText id="display" />
+				</p:panelGrid>
+
+
+				<p:outputLabel value="" />
+				<p:commandButton value="Kaydet"
+					action="#{personelBean.addPersonelFonk}" update="perEkle" />
+
+			</p:panelGrid>
+		</h:form>
+	</p:panelGrid>
+</body>
+</html>

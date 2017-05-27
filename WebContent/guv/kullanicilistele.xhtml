@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Insert title here</title>
+</h:head>
+<body>
+
+	<h:form>
+
+		<p:panelGrid columns="2">
+
+			<ui:include src="menu.xhtml" />
+
+			<p:panelGrid columns="2">
+
+				<p:dataTable id="tbl" var="userr" value="#{loginBean.userList}">
+
+					<p:column headerText="Id">
+						<h:outputText value="#{userr.id}" />
+					</p:column>
+
+					<p:column headerText="User">
+						<h:outputText value="#{userr.userName}" />
+					</p:column>
+
+					<p:column headerText="Password">
+						<h:outputText value="#{userr.password}" />
+					</p:column>
+
+				</p:dataTable>
+
+			<h:commandLink>
+				<p:graphicImage url="/guv/ico/excel.png" width="24" />
+				<p:dataExporter type="xls" target="tbl" fileName="person" />
+			</h:commandLink>
+
+			</p:panelGrid>
+
+		</p:panelGrid>
+	</h:form>
+</body>
+</html>

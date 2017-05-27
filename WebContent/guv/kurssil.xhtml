@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Insert title here</title>
+</h:head>
+<body>
+	<h:form id="form">
+		<p:panelGrid columns="2">
+
+			<ui:include src="menu.xhtml" />
+
+			<p:panelGrid columns="1">
+				<p:messages id="messages" showDetail="true" autoUpdate="true"
+					closable="true" />
+
+				<p:panelGrid columns="4">
+
+					<p:outputLabel value="Bir personle seçiniz :" />
+
+					<p:selectOneMenu converter="kursConverter"
+						value="#{kursBean.selectKurs}">
+						<f:selectItems value="#{kursBean.hangiKursList}" var="kurs"
+							itemLabel="#{kurs.kursAdi}" itemValue="#{kurs}" />
+
+					</p:selectOneMenu>
+
+					<p:commandButton value="Güncelle" action="#{kursBean.updateFonk}"
+						update="form" />
+
+					<p:commandButton value="Sil" action="#{kursBean.deleteFonk}"
+						update="form" />
+
+				</p:panelGrid>
+
+				<p:panelGrid columns="3">
+
+					<p:outputLabel for="usr" value="Kurs Adı" />
+					<p:inputText id="usr" value="#{kursBean.kursKaydet.kursAdi}" />
+					<p:commandButton value="Kaydet" action="#{kursBean.kursUpdateFonk}"
+						update="form" />
+				</p:panelGrid>
+
+
+
+
+
+			</p:panelGrid>
+		</p:panelGrid>
+	</h:form>
+</body>
+</html>

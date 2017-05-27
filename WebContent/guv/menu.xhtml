@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:panelGrid columns="1">
+		<center>
+			<h2>Personel Kayıt Sistemi</h2>
+		</center>
+		<h:form>
+			<p:growl autoUpdate="true" />
+
+			<p:panelMenu style="width:300px">
+				<p:submenu label="Personel Kayıt İşlemleri">
+					<p:menuitem value="Personel Ekle" url="personelekle.xhtml"
+						icon="ui-icon-arrowrefresh-1-w" />
+					<p:menuitem value="Personel Güncelle/Sil"
+						url="personeldeleteupdate.xhtml" icon="ui-icon-arrowrefresh-1-w" />
+					<p:menuitem value="Personel Sorgula" url="personelsorgula.xhtml"
+						icon="ui-icon-arrowrefresh-1-w" />
+				</p:submenu>
+
+				<p:separator />
+
+				<p:submenu label="Kullanıcı İşlemleri"
+					rendered="#{loginBean.yetki == 1}">
+					<p:menuitem value="Kullanıcı Ekle" url="kullaniciekle.xhtml"
+						icon="ui-icon-arrowrefresh-1-w" />
+					<p:menuitem value="Kullanıcı Güncelle/Sil" url="kullanicisil.xhtml"
+						icon="ui-icon-arrowrefresh-1-w" />
+					<p:menuitem value="Kullanıcı Listele" url="kullanicilistele.xhtml"
+						icon="ui-icon-arrowrefresh-1-w" />
+
+				</p:submenu>
+
+				<p:separator />
+
+				<p:submenu label="Kurs İşlemleri" rendered="#{loginBean.yetki == 1}">
+					<p:menuitem value="Kurs Ekle" url="kursekle.xhtml"
+						icon="ui-icon-arrowrefresh-1-w" />
+					<p:menuitem value="Kurs Güncelle/Sil"
+						url="kurssil.xhtml" icon="ui-icon-arrowrefresh-1-w" />
+					<p:menuitem value="Kurs Listele" url="kurslistele.xhtml"
+						icon="ui-icon-arrowrefresh-1-w" />
+
+				</p:submenu>
+
+			</p:panelMenu>
+
+		</h:form>
+
+		<center>
+			<h4>Kullanıcı Bilgileri</h4>
+		</center>
+
+		<p:panelGrid columns="2">
+			<f:facet name="header">
+				<p:graphicImage url="/guv/ico/user.png" height="150" width="150" />
+			</f:facet>
+
+			<h:outputText value="Kullanıcı Adı :" />
+			<h:outputText value="#{loginBean.userEntity.userName}" />
+
+			<h:outputText value="Yetki Seviyesi :" />
+			<h:outputText value="#{loginBean.yetkiMetin}" />
+
+		</p:panelGrid>
+
+		<p:commandButton value="Çıkış" action="#{loginBean.loginOut}" />
+	</p:panelGrid>
+
+</ui:composition>
+

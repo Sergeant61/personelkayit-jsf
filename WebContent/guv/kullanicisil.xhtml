@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Insert title here</title>
+</h:head>
+<body>
+
+	<h:form id="form">
+		<p:panelGrid columns="2">
+
+			<ui:include src="menu.xhtml" />
+
+			<p:panelGrid columns="1">
+
+				<p:panelGrid columns="4">
+
+					<p:outputLabel value="Bir personle seçiniz :" />
+
+					<p:selectOneMenu id="grid" converter="userConverter"
+						value="#{loginBean.user}">
+						<f:selectItems value="#{loginBean.userList}" var="dur"
+							itemLabel="#{dur.userName}" itemValue="#{dur}" />
+
+					</p:selectOneMenu>
+
+					<p:commandButton value="Güncelle"
+						action="#{loginBean.guncelleFonk}" update="form" />
+
+					<p:commandButton value="Sil" action="#{loginBean.deleteFonk}"
+						update="form" />
+						
+				</p:panelGrid>
+				
+				<p:separator />
+
+					<p:messages id="messages" showDetail="true" autoUpdate="true"
+						closable="true" />
+
+					<p:outputLabel
+						value="Username ve Password en az 6 karakterli
+ olacak şekilde giriş yapınız." />
+
+					<p:separator />
+					<p:panelGrid columns="3">
+
+						<p:outputLabel for="usr" value="Username:" />
+						<p:inputText id="usr" 
+							value="#{loginBean.userKaydet.userName}" />
+						<p:message for="usr" display="text" />
+
+						<p:outputLabel for="pas" value="Password:" />
+						<p:password id="pas"
+							value="#{loginBean.userKaydet.password}" />
+						<p:message for="pas" display="text" />
+
+						<p:outputLabel for="pass" value="Password check:" />
+						<p:password id="pass" 
+							value="#{loginBean.userKaydet.passwordCheck}" />
+						<p:message for="pass" display="text" />
+
+
+						<p:outputLabel value="Authority:" /> 
+						<p:selectOneMenu id="grid1" value="#{loginBean.yetkiSelect}">
+							<f:selectItems value="#{loginBean.yetkiList}" var="dur"
+								itemLabel="#{dur.ad}" itemValue="#{dur.id}" />
+						</p:selectOneMenu>
+						
+						
+															<p:commandButton value="Kaydet"
+						action="#{loginBean.updateUserFonk}" update="form" />
+
+					</p:panelGrid>
+
+			</p:panelGrid>
+		</p:panelGrid>
+	</h:form>
+</body>
+</html>
