@@ -56,57 +56,49 @@
 			<br />
 
 			<p:panelGrid columns="2">
-				<h:form rendered="#{personelBean.tabloView}">
 
-					<p:dataTable id="tbl" var="personn"
-						value="#{personelBean.personelList}"
-						filteredValue="#{personelBean.filtirPersonelList}">
+				<p:dataTable id="tbl" var="personn"
+					value="#{personelBean.personelList}"
+					filteredValue="#{personelBean.filtirPersonelList}">
 
-						<p:column headerText="Id">
-							<h:outputText value="#{personn.id}" />
-						</p:column>
+					<p:column headerText="Id">
+						<h:outputText value="#{personn.id}" />
+					</p:column>
 
-						<p:column headerText="Adı" filterMatchMode="contains"
-							filterBy="#{personn.ad}">
-							<h:outputText value="#{personn.ad}" />
-						</p:column>
+					<p:column headerText="Adı" filterMatchMode="contains"
+						filterBy="#{personn.ad}">
+						<h:outputText value="#{personn.ad}" />
+					</p:column>
 
-						<p:column headerText="Soyadı" filterMatchMode="contains"
-							filterBy="#{personn.soyad}">
-							<h:outputText value="#{personn.soyad}" />
-						</p:column>
+					<p:column headerText="Soyadı" filterMatchMode="contains"
+						filterBy="#{personn.soyad}">
+						<h:outputText value="#{personn.soyad}" />
+					</p:column>
 
-						<p:column headerText="Telefon">
-							<h:outputText value="#{personn.telefon}" />
-						</p:column>
+					<p:column headerText="Telefon">
+						<h:outputText value="#{personn.telefon}" />
+					</p:column>
 
-						<p:column headerText="Email">
-							<h:outputText value="#{personn.email}" />
-						</p:column>
+					<p:column headerText="Email">
+						<h:outputText value="#{personn.email}" />
+					</p:column>
 
-						<p:column headerText="Kayıt Tarihi">
-							<h:outputText value="#{personn.gorusmeZamani}" />
-						</p:column>
+					<p:column headerText="Kayıt Tarihi">
+						<h:outputText value="#{personn.gorusmeZamani}" />
+					</p:column>
 
-						<p:column headerText="Hangi Kurs" filterMatchMode="contains"
-							filterBy="#{personn.hangiKurs}">
-							<h:outputText value="#{personn.hangiKurs}" />
-						</p:column>
+					<p:column headerText="Hangi Kurs" filterMatchMode="contains"
+						filterBy="#{personn.hangiKurs}">
+						<h:outputText value="#{personn.hangiKurs}" />
+					</p:column>
 
-						<p:column headerText="Açıklama" filterMatchMode="contains"
-							filterBy="#{personn.hangiKurs}">
-							<h:outputText value="#{personn.mesaj}" />
-						</p:column>
+					<p:column headerText="Açıklama" filterMatchMode="contains"
+						filterBy="#{personn.hangiKurs}">
+						<h:outputText value="#{personn.mesaj}" />
+					</p:column>
 
-					</p:dataTable>
-					<p:separator />
+				</p:dataTable>
 
-					<h:commandLink>
-						<p:graphicImage url="/guv/ico/excel.png" width="24" />
-						<p:dataExporter type="xml" target="tbl" fileName="person" />
-					</h:commandLink>
-
-				</h:form>
 
 				<p:panelGrid columns="1">
 
@@ -115,6 +107,11 @@
 
 					<p:commandButton value="Listele"
 						action="#{personelBean.listSorguFonk}" update="dataGrid1" />
+
+					<h:commandLink>
+						<p:graphicImage url="/guv/ico/excel.png" width="24" />
+						<p:dataExporter type="xml" target="tbl" fileName="person" />
+					</h:commandLink>
 
 				</p:panelGrid>
 

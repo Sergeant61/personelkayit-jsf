@@ -15,14 +15,14 @@
 
 			<p:panelMenu style="width:300px">
 				<p:submenu label="Personel Kayıt İşlemleri">
-					<p:menuitem value="Personel Ekle" url="personelekle.xhtml"
+					<p:menuitem value="Personel Ekle" url="personelekle.xhtml" action="#{personelBean.listeleriGuncelle}"
 						icon="ui-icon-arrowrefresh-1-w" />
-					<p:menuitem value="Personel Güncelle/Sil"
+					<p:menuitem value="Personel Güncelle/Sil"  action="#{personelBean.listeleriGuncelle}"
 						url="personeldeleteupdate.xhtml" icon="ui-icon-arrowrefresh-1-w" />
-					<p:menuitem value="Personel Sorgula" url="personelsorgula.xhtml"
+					<p:menuitem value="Personel Sorgula" url="personelsorgula.xhtml"  action="#{personelBean.listeleriGuncelle}"
 						icon="ui-icon-arrowrefresh-1-w" />
 				</p:submenu>
-
+ 
 				<p:separator />
 
 				<p:submenu label="Kullanıcı İşlemleri"

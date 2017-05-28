@@ -16,7 +16,7 @@
 			<ui:include src="menu.xhtml" />
 
 			<p:panelGrid columns="1">
-				<p:messages id="messages" showDetail="true" autoUpdate="true"
+				<p:messages id="messages" showDetail="true" autoUpdate="false"
 					closable="true" />
 
 				<p:panelGrid columns="4">
@@ -41,7 +41,7 @@
 				<p:panelGrid columns="3">
 
 					<p:outputLabel for="usr" value="Kurs Adı" />
-					<p:inputText id="usr" value="#{kursBean.kursKaydet.kursAdi}" />
+					<p:inputText id="usr" value="#{kursBean.kursKaydet.kursAdi}" required="true"/>
 					<p:commandButton value="Kaydet" action="#{kursBean.kursUpdateFonk}"
 						update="form" />
 				</p:panelGrid>

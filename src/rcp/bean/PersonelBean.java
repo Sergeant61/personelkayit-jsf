@@ -78,6 +78,15 @@ public class PersonelBean {
 		this.selectedHangiKursListText = new ArrayList<>();
 
 	}
+	
+	public void listeleriGuncelle(){
+		this.personAdd = new Person();
+		this.sorgulaEntity = new SorgulaEntity();
+		this.personelList = DAO.getInstance().getPersonList();
+		this.hangiKursList = DAO.getInstance().getHangiKursList();
+		convertListString(personelList);
+		convertHangiKursListString(hangiKursList);
+	}
 
 	public void listSorguFonk() {
 		this.personelList = DAO.getInstance().sorgula(this.sorgulaEntity);

@@ -47,7 +47,7 @@ public class KursBean implements Serializable {
 	}
 
 	public void updateFonk() {
-
+		hangiKurs.setId(selectKurs.getId());
 		kursKaydet.setKursAdi(selectKurs.getKursAdi());
 
 	}
